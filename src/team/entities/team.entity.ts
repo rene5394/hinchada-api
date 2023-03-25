@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { League } from 'src/league/entities/league.entity';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Team {
@@ -7,4 +8,7 @@ export class Team {
 
   @Column({ type: 'varchar', length: 20 })
   name: string;
+
+  @OneToOne(() => League) @JoinColumn()
+  league: League;
 }
