@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity('kits')
 export class Kit {
   @PrimaryGeneratedColumn({ type: 'smallint'})
   id: number;

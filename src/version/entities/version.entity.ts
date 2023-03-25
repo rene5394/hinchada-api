@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity('version')
 export class Version {
   @PrimaryGeneratedColumn({ type: 'tinyint'})
   id: number;

@@ -1,6 +1,6 @@
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity('patches')
 export class Patch {
   @PrimaryGeneratedColumn({ type: 'tinyint'})
   id: number;

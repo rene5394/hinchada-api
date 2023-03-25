@@ -4,7 +4,7 @@ import { Version } from 'src/version/entities/version.entity';
 import { Column, Entity, JoinColumn, JoinTable, ManyToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Patch } from '../../patch/entities/patch.entity';
 
-@Entity()
+@Entity('jerseys')
 export class Jersey {
   @PrimaryGeneratedColumn({ type: 'int'})
   id: number;
@@ -24,10 +24,8 @@ export class Jersey {
   @OneToOne(() => Version) @JoinColumn()
   version: Version;
 
-  @ManyToMany(() => Patch, {
-    cascade: true,
-  })
-  @JoinTable({ name: 'jerseyPatches' })
+  @ManyToMany(() => Patch)
+  @JoinTable({ name: 'jersey_patches' })
   patches: Patch[];
 
   @Column({ default: true })
