@@ -15,6 +15,7 @@ import { Patch } from './patch/entities/patch.entity';
 import { Size } from './size/entities/size.entity';
 import { Team } from './team/entities/team.entity';
 import { Version } from './version/entities/version.entity';
+import { LeagueModule } from './league/league.module';
 
 @Module({
   imports: [ConfigModule.forRoot(),
@@ -36,7 +37,8 @@ import { Version } from './version/entities/version.entity';
     TeamModule,
     KitModule,
     SizeModule,
-    PatchModule,],
+    PatchModule,
+    LeagueModule,],
   controllers: [AppController],
   providers: [AppService],
 })
