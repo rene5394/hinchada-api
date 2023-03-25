@@ -1,4 +1,7 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Kit } from 'src/kit/entities/kit.entity';
+import { Team } from 'src/team/entities/team.entity';
+import { Version } from 'src/version/entities/version.entity';
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Patch } from '../../patch/entities/patch.entity';
 
 @Entity()
@@ -12,14 +15,20 @@ export class Jersey {
   @Column({ type: 'smallint' })
   quantity: number;
 
-  @Column({ type: 'smallint' })
-  teamId: number;
+  @OneToOne(() => Team) @JoinColumn()
+  team: Team;
 
-  @Column({ type: 'smallint' })
-  kitId: number;
+  @OneToOne(() => Kit) @JoinColumn()
+  kit: Kit;
 
-  @Column({ type: 'smallint' })
-  versionId: number;
+  @OneToOne(() => Version) @JoinColumn()
+  version: Version;
+
+  @ManyToMany(() => Patch, {
+    cascade: true,
+  })
+  @JoinTable({ name: 'jerseyPatches' })
+  patches: Patch[];
 
   @Column({ default: true })
   isActive: boolean;

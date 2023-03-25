@@ -1,12 +1,20 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Size } from './entities/size.entity';
 
 @Injectable()
 export class SizeService {
-  findAll() {
-    return `This action returns all size`;
+  constructor(
+    @InjectRepository(Size)
+    private sizeRepository: Repository<Size>
+  ) {}
+
+  async findAll(): Promise<Size[]> {
+    return await this.sizeRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} size`;
+  async findOne(id: number): Promise<Size> {
+    return await this.sizeRepository.findOneBy({ id });
   }
 }

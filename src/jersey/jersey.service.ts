@@ -1,26 +1,34 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateJerseyDto } from './dto/create-jersey.dto';
 import { UpdateJerseyDto } from './dto/update-jersey.dto';
+import { Jersey } from './entities/jersey.entity';
 
 @Injectable()
 export class JerseyService {
-  create(createJerseyDto: CreateJerseyDto) {
-    return 'This action adds a new jersey';
+  constructor(
+    @InjectRepository(Jersey)
+    private jerseyRepository: Repository<Jersey>
+  ) {}
+
+  async create(createJerseyDto: CreateJerseyDto) {
+    return await this.jerseyRepository.save(createJerseyDto);
   }
 
-  findAll() {
-    return `This action returns all jersey`;
+  async findAll(): Promise<Jersey[]> {
+    return await this.jerseyRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} jersey`;
+  async findOne(id: number): Promise<Jersey> {
+    return await this.jerseyRepository.findOneBy({ id });
   }
 
-  update(id: number, updateJerseyDto: UpdateJerseyDto) {
-    return `This action updates a #${id} jersey`;
+  async update(id: number, updateJerseyDto: UpdateJerseyDto) {
+    return await this.jerseyRepository.update(id, updateJerseyDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} jersey`;
+  async remove(id: number) {
+    return await this.jerseyRepository.delete(id);
   }
 }

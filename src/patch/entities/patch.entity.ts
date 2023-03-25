@@ -1,5 +1,5 @@
-import { Jersey } from 'src/jersey/entities/jersey.entity';
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Jersey } from 'src/jersey/entities/jersey.entity';
 
 @Entity()
 export class Patch {

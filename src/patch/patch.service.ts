@@ -1,26 +1,34 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreatePatchDto } from './dto/create-patch.dto';
 import { UpdatePatchDto } from './dto/update-patch.dto';
+import { Patch } from './entities/patch.entity';
 
 @Injectable()
 export class PatchService {
-  create(createPatchDto: CreatePatchDto) {
-    return 'This action adds a new patch';
+  constructor(
+    @InjectRepository(Patch)
+    private patchRepository: Repository<Patch>
+  ) {}
+
+  async create(createPatchDto: CreatePatchDto) {
+    return await this.patchRepository.save(createPatchDto);
   }
 
-  findAll() {
-    return `This action returns all patch`;
+  async findAll(): Promise<Patch[]> {
+    return await this.patchRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} patch`;
+  async findOne(id: number): Promise<Patch> {
+    return await this.patchRepository.findOneBy({ id });
   }
 
-  update(id: number, updatePatchDto: UpdatePatchDto) {
-    return `This action updates a #${id} patch`;
+  async update(id: number, updatePatchDto: UpdatePatchDto) {
+    return await this.patchRepository.update(id, updatePatchDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} patch`;
+  async remove(id: number) {
+    return await this.patchRepository.delete(id);
   }
 }

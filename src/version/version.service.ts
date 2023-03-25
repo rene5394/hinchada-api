@@ -1,12 +1,20 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Version } from './entities/version.entity';
 
 @Injectable()
 export class VersionService {
-  findAll() {
-    return `This action returns all version`;
+  constructor(
+    @InjectRepository(Version)
+    private versionRepository: Repository<Version>
+  ) {}
+
+  async findAll(): Promise<Version[]> {
+    return await this.versionRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} version`;
+  async findOne(id: number): Promise<Version> {
+    return await this.versionRepository.findOneBy({ id });
   }
 }
