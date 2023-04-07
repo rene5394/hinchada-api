@@ -9,12 +9,6 @@ import { PatchModule } from './patch/patch.module';
 import { SizeModule } from './size/size.module';
 import { TeamModule } from './team/team.module';
 import { VersionModule } from './version/version.module';
-import { Jersey } from './jersey/entities/jersey.entity';
-import { Kit } from './kit/entities/kit.entity';
-import { Patch } from './patch/entities/patch.entity';
-import { Size } from './size/entities/size.entity';
-import { Team } from './team/entities/team.entity';
-import { Version } from './version/entities/version.entity';
 import { LeagueModule } from './league/league.module';
 
 @Module({
