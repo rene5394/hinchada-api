@@ -20,7 +20,7 @@ export class leagueDataSeeding1682199411357 implements MigrationInterface {
         { name: 'Primera División de Argentina' },
         { name: 'Campeonato Brasileño de Serie A' },
         { name: 'Liga MX' },
-        { name: 'NBA' },
+        { name: 'NBA' }
       ])
       .execute();
     }
