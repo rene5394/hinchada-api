@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Team } from 'src/team/entities/team.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('leagues')
 export class League {
@@ -10,4 +11,7 @@ export class League {
 
   @Column({ default: true })
   isActive: boolean;
+
+  @OneToMany(() => Team, team => team.league)
+  teams: Team[];
 }
