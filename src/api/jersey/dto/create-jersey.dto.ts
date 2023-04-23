@@ -24,7 +24,7 @@ export class CreateJerseyDto {
   @IsArray()
   @ArrayNotEmpty()
   @IsNumber({}, { each: true })
-  patchIds: number[];
+  patches: number[];
 
   @IsOptional()
   @Transform(({ value }) => value === 'true')

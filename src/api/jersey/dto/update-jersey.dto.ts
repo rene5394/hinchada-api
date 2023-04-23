@@ -24,9 +24,8 @@ export class UpdateJerseyDto extends PartialType(CreateJerseyDto) {
 
   @IsOptional()
   @IsArray()
-  @ArrayNotEmpty()
   @IsNumber({}, { each: true })
-  patchIds: number[];
+  patches: number[];
 
   @IsOptional()
   @Transform(({ value }) => value === 'true')
