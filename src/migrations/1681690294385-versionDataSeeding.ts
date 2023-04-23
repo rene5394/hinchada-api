@@ -10,7 +10,8 @@ export class versionDataSeeding1681690294385 implements MigrationInterface {
       .into(Version)
       .values([
         { name: 'Fan' },
-        { name: 'Player' }
+        { name: 'Player' },
+        { name: 'Woman' }
       ])
       .execute();
   }
