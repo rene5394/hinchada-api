@@ -1,4 +1,4 @@
-import { Version } from 'src/version/entities/version.entity';
+import { Version } from 'src/api/version/entities/version.entity';
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
 export class versionDataSeeding1681690294385 implements MigrationInterface {

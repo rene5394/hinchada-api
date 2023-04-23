@@ -1,4 +1,4 @@
-import { Size } from 'src/size/entities/size.entity';
+import { Size } from 'src/api/size/entities/size.entity';
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
 export class sizeDataSeeding1681690282716 implements MigrationInterface {

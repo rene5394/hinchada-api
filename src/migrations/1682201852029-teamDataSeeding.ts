@@ -1,5 +1,5 @@
-import { League } from 'src/league/entities/league.entity';
-import { Team } from 'src/team/entities/team.entity';
+import { League } from 'src/api/league/entities/league.entity';
+import { Team } from 'src/api/team/entities/team.entity';
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
 export class teamDataSeeding1682201852029 implements MigrationInterface {

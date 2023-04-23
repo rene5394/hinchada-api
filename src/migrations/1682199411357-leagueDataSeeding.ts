@@ -1,4 +1,4 @@
-import { League } from 'src/league/entities/league.entity';
+import { League } from 'src/api/league/entities/league.entity';
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
 export class leagueDataSeeding1682199411357 implements MigrationInterface {

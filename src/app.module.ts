@@ -4,13 +4,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { JerseyModule } from './jersey/jersey.module';
-import { KitModule } from './kit/kit.module';
-import { PatchModule } from './patch/patch.module';
-import { SizeModule } from './size/size.module';
-import { TeamModule } from './team/team.module';
-import { VersionModule } from './version/version.module';
-import { LeagueModule } from './league/league.module';
+import { JerseyModule } from './api/jersey/jersey.module';
+import { KitModule } from './api/kit/kit.module';
+import { PatchModule } from './api/patch/patch.module';
+import { SizeModule } from './api/size/size.module';
+import { TeamModule } from './api/team/team.module';
+import { VersionModule } from './api/version/version.module';
+import { LeagueModule } from './api/league/league.module';
 
 @Module({
   imports: [ConfigModule.forRoot(),
