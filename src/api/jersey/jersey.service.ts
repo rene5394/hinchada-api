@@ -40,7 +40,12 @@ export class JerseyService {
   }
 
   async update(id: number, updateJerseyDto: UpdateJerseyDto) {
-    const patches = await this.patchRepository.findBy({ id: In(updateJerseyDto.patches) });
+    let patches = [];
+    
+    if (updateJerseyDto.patches && updateJerseyDto.patches.length > 0) {
+      patches = await this.patchRepository.findBy({ id: In(updateJerseyDto.patches) });
+    }
+
     const oldJersey = await this.findOne(id);
 
     const jersey = this.jerseyRepository.create({
