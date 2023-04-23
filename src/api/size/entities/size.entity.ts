@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Jersey } from 'src/api/jersey/entities/jersey.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('sizes')
 export class Size {
@@ -7,4 +8,7 @@ export class Size {
 
   @Column({ type: 'varchar', length: 20 })
   name: string;
+
+  @OneToMany(() => Jersey, jersey => jersey.size)
+  jerseys: Jersey[];
 }

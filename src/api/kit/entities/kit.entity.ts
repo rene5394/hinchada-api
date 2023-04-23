@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Jersey } from 'src/api/jersey/entities/jersey.entity';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('kits')
 export class Kit {
@@ -10,4 +11,7 @@ export class Kit {
 
   @Column({ default: true })
   isActive: boolean;
+
+  @OneToMany(() => Jersey, jersey => jersey.kit)
+  jerseys: Jersey[];
 }

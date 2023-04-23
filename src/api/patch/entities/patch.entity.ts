@@ -1,4 +1,5 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Jersey } from 'src/api/jersey/entities/jersey.entity';
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('patches')
 export class Patch {
@@ -10,4 +11,8 @@ export class Patch {
 
   @Column({ default: true })
   isActive: boolean;
+
+  @ManyToMany(() => Jersey, jersey => jersey.patches)
+  @JoinTable({ name: 'jerseys_patches' })
+  jerseys: Jersey[];
 }

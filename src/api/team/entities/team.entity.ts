@@ -1,5 +1,6 @@
+import { Jersey } from 'src/api/jersey/entities/jersey.entity';
 import { League } from 'src/api/league/entities/league.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('teams')
 export class Team {
@@ -11,6 +12,9 @@ export class Team {
 
   @Column({ default: true })
   isActive: boolean;
+
+  @OneToMany(() => Jersey, jersey => jersey.team)
+  jersey: Jersey[];
 
   @ManyToOne(() => League, league => league.teams)
   league: League;
