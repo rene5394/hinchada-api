@@ -3,8 +3,8 @@ import { MigrationInterface, QueryRunner } from 'typeorm';
 
 export class leagueDataSeeding1682199411357 implements MigrationInterface {
 
-    public async up(queryRunner: QueryRunner): Promise<void> {
-      await queryRunner.manager
+  public async up(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.manager
       .createQueryBuilder()
       .insert()
       .into(League)
@@ -23,15 +23,15 @@ export class leagueDataSeeding1682199411357 implements MigrationInterface {
         { name: 'NBA' }
       ])
       .execute();
-    }
+  }
 
-    public async down(queryRunner: QueryRunner): Promise<void> {
-      await queryRunner.manager
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.manager
       .createQueryBuilder()
       .delete()
       .from(League)
       .whereInIds([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
       .execute();
-    }
+  }
 
 }

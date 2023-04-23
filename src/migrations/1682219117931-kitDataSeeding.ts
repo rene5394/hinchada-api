@@ -3,8 +3,8 @@ import { MigrationInterface, QueryRunner } from 'typeorm';
 
 export class kitDataSeeding1682219117931 implements MigrationInterface {
 
-    public async up(queryRunner: QueryRunner): Promise<void> {
-      await queryRunner.manager
+  public async up(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.manager
       .createQueryBuilder()
       .insert()
       .into(Kit)
@@ -15,15 +15,15 @@ export class kitDataSeeding1682219117931 implements MigrationInterface {
         { name: 'Special Edition 22/23' }
       ])
       .execute();
-    }
+  }
 
-    public async down(queryRunner: QueryRunner): Promise<void> {
-      await queryRunner.manager
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.manager
       .createQueryBuilder()
       .delete()
       .from(Kit)
       .whereInIds([1, 2, 3, 4])
       .execute();
-    }
+  }
 
 }

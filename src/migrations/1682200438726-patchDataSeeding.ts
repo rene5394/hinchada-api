@@ -3,8 +3,8 @@ import { MigrationInterface, QueryRunner } from 'typeorm';
 
 export class patchDataSeeding1682200438726 implements MigrationInterface {
 
-    public async up(queryRunner: QueryRunner): Promise<void> {
-      await queryRunner.manager
+  public async up(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.manager
       .createQueryBuilder()
       .insert()
       .into(Patch)
@@ -31,10 +31,10 @@ export class patchDataSeeding1682200438726 implements MigrationInterface {
         { name: 'NBA' }
       ])
       .execute();
-    }
+  }
 
-    public async down(queryRunner: QueryRunner): Promise<void> {
-      await queryRunner.manager
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.manager
       .createQueryBuilder()
       .delete()
       .from(Patch)
@@ -43,6 +43,6 @@ export class patchDataSeeding1682200438726 implements MigrationInterface {
         11, 12, 13, 14, 15, 16, 17, 18, 19, 20
       ])
       .execute();
-    }
+  }
 
 }
