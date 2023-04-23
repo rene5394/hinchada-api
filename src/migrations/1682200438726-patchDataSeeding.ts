@@ -1,5 +1,5 @@
-import { Patch } from "src/patch/entities/patch.entity";
-import { MigrationInterface, QueryRunner } from "typeorm"
+import { Patch } from 'src/patch/entities/patch.entity';
+import { MigrationInterface, QueryRunner } from 'typeorm';
 
 export class patchDataSeeding1682200438726 implements MigrationInterface {
 
