@@ -22,7 +22,6 @@ import { LeagueModule } from './api/league/league.module';
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE,
     autoLoadEntities: true,
-    synchronize: JSON.parse(process.env.DATABASE_SYNCHRONIZE),
     extra: {
       connectionLimit: parseInt(process.env.DATABASE_CONNECTION_LIMIT)
     }
