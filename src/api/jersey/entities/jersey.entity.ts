@@ -1,8 +1,9 @@
 import { Kit } from 'src/api/kit/entities/kit.entity';
 import { Team } from 'src/api/team/entities/team.entity';
 import { Version } from 'src/api/version/entities/version.entity';
-import { Column, Entity, JoinColumn, JoinTable, ManyToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Patch } from '../../patch/entities/patch.entity';
+import { Size } from 'src/api/size/entities/size.entity';
 
 @Entity('jerseys')
 export class Jersey {
@@ -15,19 +16,34 @@ export class Jersey {
   @Column({ type: 'smallint' })
   quantity: number;
 
-  @OneToOne(() => Team) @JoinColumn()
+  @ManyToOne(() => Team, team => team.jersey)
   team: Team;
 
-  @OneToOne(() => Kit) @JoinColumn()
+  @Column()
+  teamId: number;
+
+  @ManyToOne(() => Kit, kit => kit.jerseys)
   kit: Kit;
 
-  @OneToOne(() => Version) @JoinColumn()
+  @Column()
+  kitId: number;
+
+  @ManyToOne(() => Size, size => size.jerseys)
+  size: Version;
+
+  @Column()
+  sizeId: number;
+
+  @ManyToOne(() => Version, version => version.jerseys)
   version: Version;
 
-  @ManyToMany(() => Patch)
-  @JoinTable({ name: 'jersey_patches' })
-  patches: Patch[];
+  @Column()
+  versionId: number;
 
   @Column({ default: true })
   isActive: boolean;
+
+  @ManyToMany(() => Patch, patch => patch.jerseys)
+  @JoinTable({ name: 'jerseys_patches' })
+  patches: Patch[];
 }
