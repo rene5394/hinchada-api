@@ -1,6 +1,6 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { Transform } from 'class-transformer';
-import { ArrayNotEmpty, IsArray, IsBoolean, IsInt, IsNotEmpty, IsNumber, IsOptional, Max, MaxLength, Min } from 'class-validator';
+import { IsArray, IsBoolean, IsInt, IsNotEmpty, IsNumber, IsOptional, Max, MaxLength, Min } from 'class-validator';
 import { CreateJerseyDto } from './create-jersey.dto';
 
 export class UpdateJerseyDto extends PartialType(CreateJerseyDto) {
@@ -14,10 +14,13 @@ export class UpdateJerseyDto extends PartialType(CreateJerseyDto) {
   quantity: number;
 
   @Min(1)
-  teamId: number;
+  kitId: number;
 
   @Min(1)
-  kitId: number;
+  sizeId: number;
+
+  @Min(1)
+  teamId: number;
 
   @Min(1)
   versionId: number;

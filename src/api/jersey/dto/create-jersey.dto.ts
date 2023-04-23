@@ -12,10 +12,13 @@ export class CreateJerseyDto {
   quantity: number;
 
   @Min(1)
-  teamId: number;
+  kitId: number;
 
   @Min(1)
-  kitId: number;
+  sizeId: number;
+
+  @Min(1)
+  teamId: number;
 
   @Min(1)
   versionId: number;
