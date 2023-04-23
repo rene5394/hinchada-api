@@ -1,49 +1,54 @@
+import { League } from 'src/league/entities/league.entity';
 import { Team } from "src/team/entities/team.entity";
 import { MigrationInterface, QueryRunner } from "typeorm"
 
 export class teamDataSeeding1682201852029 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
+      const leagues = await queryRunner.manager.find(League);
+      
+      const teams = [
+        { name: 'Real Madrid', leagueId: leagues.find(league => league.name === 'La Liga').id },
+        { name: 'Barcelona', leagueId: leagues.find(league => league.name === 'La Liga').id },
+        { name: 'Atletico de Madrid', leagueId: leagues.find(league => league.name === 'La Liga').id },
+        { name: 'Manchester City', leagueId: leagues.find(league => league.name === 'Premier League').id },
+        { name: 'Manchester United', leagueId: leagues.find(league => league.name === 'Premier League').id },
+        { name: 'Liverpool', leagueId: leagues.find(league => league.name === 'Premier League').id },
+        { name: 'Chelsea', leagueId: leagues.find(league => league.name === 'Premier League').id },
+        { name: 'Arsenal', leagueId: leagues.find(league => league.name === 'Premier League').id },
+        { name: 'Tottenham', leagueId: leagues.find(league => league.name === 'Premier League').id },
+        { name: 'Bayern Munich', leagueId: leagues.find(league => league.name === 'Bundesliga').id },
+        { name: 'Borussia Dortmund', leagueId: leagues.find(league => league.name === 'Bundesliga').id },
+        { name: 'Juventus', leagueId: leagues.find(league => league.name === 'Serie A').id },
+        { name: 'AC Milan', leagueId: leagues.find(league => league.name === 'Serie A').id },
+        { name: 'Inter Milan', leagueId: leagues.find(league => league.name === 'Serie A').id },
+        { name: 'Napoli', leagueId: leagues.find(league => league.name === 'Serie A').id },
+        { name: 'París Saint-Germain', leagueId: leagues.find(league => league.name === 'Ligue 1').id },
+        { name: 'Ajax', leagueId: leagues.find(league => league.name === 'Eredivisie').id },
+        { name: 'Boca Juniors', leagueId: leagues.find(league => league.name === 'Primera División de Argentina').id },
+        { name: 'River Plate', leagueId: leagues.find(league => league.name === 'Primera División de Argentina').id },
+        { name: 'America', leagueId: leagues.find(league => league.name === 'Liga MX').id },
+        { name: 'Chivas', leagueId: leagues.find(league => league.name === 'Liga MX').id },
+        { name: 'Pumas', leagueId: leagues.find(league => league.name === 'Liga MX').id },
+        { name: 'Lakers', leagueId: leagues.find(league => league.name === 'NBA').id },
+        { name: 'Warriors', leagueId: leagues.find(league => league.name === 'NBA').id },
+        { name: 'Cavaliers', leagueId: leagues.find(league => league.name === 'NBA').id },
+        { name: 'Celtics', leagueId: leagues.find(league => league.name === 'NBA').id },
+        { name: 'Argentina', leagueId: leagues.find(league => league.name === 'National Teams').id },
+        { name: 'Brazil', leagueId: leagues.find(league => league.name === 'National Teams').id },
+        { name: 'France', leagueId: leagues.find(league => league.name === 'National Teams').id },
+        { name: 'Germany', leagueId: leagues.find(league => league.name === 'National Teams').id },
+        { name: 'Japan', leagueId: leagues.find(league => league.name === 'National Teams').id },
+        { name: 'Portugal', leagueId: leagues.find(league => league.name === 'National Teams').id },
+        { name: 'Spain', leagueId: leagues.find(league => league.name === 'National Teams').id },
+        { name: 'Uruguay', leagueId: leagues.find(league => league.name === 'National Teams').id }
+      ];
+
       await queryRunner.manager
       .createQueryBuilder()
       .insert()
       .into(Team)
-      .values([
-        { name: 'Real Madrid', league: {id: 2} },
-        { name: 'Barcelona', league: {id: 2} },
-        { name: 'Atletico de Madrid', league: {id: 2} },
-        { name: 'Manchester City', league: {id: 3} },
-        { name: 'Manchester United', league: {id: 3} },
-        { name: 'Liverpool', league: {id: 3} },
-        { name: 'Chelsea', league: {id: 3} },
-        { name: 'Arsenal', league: {id: 3} },
-        { name: 'Tottenham', league: {id: 3} },
-        { name: 'Bayern Munich', league: {id: 4} },
-        { name: 'Borussia Dortmund', league: {id: 4} },
-        { name: 'Juventus', league: {id: 5} },
-        { name: 'AC Milan', league: {id: 5} },
-        { name: 'Inter Milan', league: {id: 5} },
-        { name: 'Napoli', league: {id: 5} },
-        { name: 'París Saint-Germain', league: {id: 6} },
-        { name: 'Ajax', league: {id: 8} },
-        { name: 'Boca Juniors', league: {id: 9} },
-        { name: 'River Plate', league: {id: 9} },
-        { name: 'America', league: {id: 11} },
-        { name: 'Chivas', league: {id: 11} },
-        { name: 'Pumas', league: {id: 11} },
-        { name: 'Lakers', league: {id: 11} },
-        { name: 'Warriors', league: {id: 12} },
-        { name: 'Cavaliers', league: {id: 12} },
-        { name: 'Celtics', league: {id: 12} },
-        { name: 'Argentina', league: {id: 1} },
-        { name: 'Brazil', league: {id: 1} },
-        { name: 'France', league: {id: 1} },
-        { name: 'Germany', league: {id: 1} },
-        { name: 'Japan', league: {id: 1} },
-        { name: 'Portugal', league: {id: 1} },
-        { name: 'Spain', league: {id: 1} },
-        { name: 'Uruguay', league: {id: 1} }
-      ])
+      .values(teams)
       .execute();
     }
 
