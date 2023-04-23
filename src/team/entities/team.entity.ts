@@ -1,5 +1,5 @@
 import { League } from 'src/league/entities/league.entity';
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('teams')
 export class Team {
@@ -12,6 +12,9 @@ export class Team {
   @Column({ default: true })
   isActive: boolean;
 
-  @OneToOne(() => League) @JoinColumn()
+  @ManyToOne(() => League, league => league.teams)
   league: League;
+
+  @Column()
+  leagueId: number;
 }
