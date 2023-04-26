@@ -1,4 +1,4 @@
-import { Team } from 'src/api/team/entities/team.entity';
+import { Team } from '../../team/entities/team.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('leagues')

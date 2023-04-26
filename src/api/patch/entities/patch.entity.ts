@@ -1,4 +1,4 @@
-import { Jersey } from 'src/api/jersey/entities/jersey.entity';
+import { Jersey } from '../../jersey/entities/jersey.entity';
 import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('patches')

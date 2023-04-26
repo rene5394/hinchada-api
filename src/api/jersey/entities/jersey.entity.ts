@@ -1,9 +1,9 @@
-import { Kit } from 'src/api/kit/entities/kit.entity';
-import { Team } from 'src/api/team/entities/team.entity';
-import { Version } from 'src/api/version/entities/version.entity';
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Kit } from '../../kit/entities/kit.entity';
+import { Team } from '../../team/entities/team.entity';
+import { Version } from '../../version/entities/version.entity';
 import { Patch } from '../../patch/entities/patch.entity';
-import { Size } from 'src/api/size/entities/size.entity';
+import { Size } from '../../size/entities/size.entity';
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('jerseys')
 export class Jersey {

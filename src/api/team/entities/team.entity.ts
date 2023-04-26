@@ -1,5 +1,5 @@
-import { Jersey } from 'src/api/jersey/entities/jersey.entity';
-import { League } from 'src/api/league/entities/league.entity';
+import { Jersey } from '../../jersey/entities/jersey.entity';
+import { League } from '../../league/entities/league.entity';
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('teams')
